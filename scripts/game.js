@@ -1258,31 +1258,32 @@ function setStopWatch(option){
 		setStopWatch('reset');
 		$('#stopwatch').text('00:00');
 	}
-
-	function execAfterRemainingTime(){
-		updateStopWatchText();
-		intvTimer = setInterval( function(){ updateStopWatchText() }, period);
-	}
-
-	function updateStopWatchText(){
-		$('#stopwatch').text( valToStr(Math.floor(stopwatchSec/60))+':'+valToStr(Math.floor(stopwatchSec%60)) );
-		startTime = new Date();
-		stopwatchSec++;
-	}	
-
-	function valToStr(val){
-		if( val < 10 ){
-			return '0' + val;
-		}
-		return val.toString();
-	}
 }
-	// if( gameStage == GameStage.pause || gameStage == GAmeStage.resume ){
 
-	// }
-	// else if( gameStage == GameStage.play ){
-	// 	if( time() - currentMs >= 1000 ){
-	// 	currentMs = time();
-	// 	currentSec
-	// }
-	// }
+function execAfterRemainingTime(){
+	updateStopWatchText();
+	intvTimer = setInterval( function(){ updateStopWatchText() }, period);
+}
+
+function updateStopWatchText(){
+	$('#stopwatch').text( valToStr(Math.floor(stopwatchSec/60))+':'+valToStr(Math.floor(stopwatchSec%60)) );
+	startTime = new Date();
+	stopwatchSec++;
+}	
+
+function valToStr(val){
+	if( val < 10 ){
+		return '0' + val;
+	}
+	return val.toString();
+}
+
+// if( gameStage == GameStage.pause || gameStage == GAmeStage.resume ){
+
+// }
+// else if( gameStage == GameStage.play ){
+// 	if( time() - currentMs >= 1000 ){
+// 	currentMs = time();
+// 	currentSec
+// }
+// }
