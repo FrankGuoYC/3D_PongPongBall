@@ -160,11 +160,12 @@ function gotoGameStage(nextStage) {
 		// If the previous stage is pause
 		if( gameStage == GameStage.pause ) {
 			// Resume the animation frame
-			animationFrameHandler =  requestAnimationFrame( updateAnimation )
+			animationFrameHandler =  requestAnimationFrame( updateAnimation );
 			// Reset the scores
-			score1 = score2 = 0
+			score1 = score2 = 0;
 			// Update the score text
-			updateStatusText('resetGame')
+			updateStatusText('resetGame');
+		}
 	} 
 	else if ( nextStage == GameStage.setting ) {
 		
@@ -1285,4 +1286,3 @@ function setStopWatch(option){
 	// 	currentSec
 	// }
 	// }
-
