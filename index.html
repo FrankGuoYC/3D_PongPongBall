@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Game</title>
+		<link rel="icon" href="img/ball.png">
+		<link rel="stylesheet" href="css/style.css">
+		<!-- Bootstrap CSS ( glyphicon only) -->
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+	</head>
+	<body onload='setup();'>
+
+		<div id='scoreboard'>
+			<span id='score1'></span>
+			<span id='slash'>-</span>
+			<span id='score2'></span>
+		</div>
+		<div id='stopwatch'>00:00</div>		
+		
+		<div id='gameCanvas'></div>
+
+		
+		<div id='welcomeScreen'>
+			<div id='gameTitle'></div>
+			<div id='inputNameCtn'>
+				<input type="text" class='inputName' id='name1' placeholder="Player1's name"><br>
+  				<input type="text" class='inputName' id='name2' placeholder="Player2's name"><br>
+  			</div>
+			<input class='btn' id='gameStartBtn' type='button' value='進入遊戲'>
+		</div>
+		<div id='sbtnCtn'>
+			<button class='sbtn' id='muteBtn' type='button'><img src="img/on.png" alt="?" height="22" width="22"></button>
+			<button class='sbtn' id='pauseBtn_s' type='button'><img src="img/pause.png" alt="?" height="22" width="22"></button>
+		</div>
+		<div id='pauseScreen'>
+			<div id='pauseTitle'>Pause</div>
+			<div id='pauseBtnCtn'>			
+				<button class='bbtn' id='homeBtn_b' type='button' title='Home'><img src="img/home.png" alt="?" height="50" width="50"></button>				
+				<button class='bbtn' id='resumeBtn_b' type='button' title='Resume'><img src="img/play.png" alt="?" height="50" width="50"></button>
+			</div>
+
+		</div>
+		<div id='endScreen'>
+			<button class='btn' id='homeBtn' type='button'><img src="img/home.png" alt="?" height="22" width="22">Home</button>
+			<button class='btn' id='replayBtn' type='button'><img src="img/return.png" alt="?" height="22" width="22">Replay</button>
+			<div id='gameStatus'><span id="loading" style="color: white; font-size: 30px">Loading...</span></div>
+		</div>
+
+
+		
+
+
+
+
+<!-- 		<div id='scoreboard'>
+			<h1 id='scores'>0-0</h1>
+			<h1 id='title'>3D PONG</h1>
+			<h2 id='winnerBoard'>First to 7 wins!</h2>
+			<h3>A - move left
+			<br>D - move right</h3> -->
+		
+		<!-- include js file -->
+		<script src='scripts/jquery.min.js'></script>	
+		<script src='scripts/three.min.js'></script>
+		<script src='scripts/keyboard.js'></script>
+		<script src='scripts/game.js'></script>
+		<!-- fonts -->
+		<script src='scripts/Segoe_UI_Regular.js'></script>
+
+	</body>
+</html>
