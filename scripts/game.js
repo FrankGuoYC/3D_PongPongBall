@@ -195,6 +195,7 @@ function gotoGameStage(nextStage) {
 			if (gameStage == GameStage.end){
 				// Reset stopwatch
 				setStopWatch('stop')
+				setStopWatch('start')
 			}
 			// Reset game
 			resetGame();
