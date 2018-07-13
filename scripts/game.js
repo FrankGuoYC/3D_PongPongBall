@@ -107,13 +107,13 @@ let opacityOfUnfocusedCanvas = .3;
 function setup() {
 	// This function would be called when the game is execute at the first time
 	// First, add event listener to every button
-	$('#gameStartBtn').on('click', function(event){ switchGameStage( GameStage.play ) });
-	$('#homeBtn').on('click',function(event){ switchGameStage( GameStage.welcome ) });
-	$('#replayBtn').on('click', function(event){ switchGameStage( GameStage.play ) });
+	$('#gameStartBtn').on('click', function(event){ gotoGameStage( GameStage.play ) });
+	$('#homeBtn').on('click',function(event){ gotoGameStage( GameStage.welcome ) });
+	$('#replayBtn').on('click', function(event){ gotoGameStage( GameStage.play ) });
 	$('#muteBtn').on('click', function(event){ toggleMute() });
-	$('#pauseBtn_s').on('click', function(event){ switchGameStage( GameStage.pause ) });
-	$('#resumeBtn_b').on('click', function(event){ switchGameStage( GameStage.resume ) });
-	$('#homeBtn_b').on('click', function(event){ switchGameStage( GameStage.welcome ) });
+	$('#pauseBtn_s').on('click', function(event){ gotoGameStage( GameStage.pause ) });
+	$('#resumeBtn_b').on('click', function(event){ gotoGameStage( GameStage.resume ) });
+	$('#homeBtn_b').on('click', function(event){ gotoGameStage( GameStage.welcome ) });
 	// Clear the title (Since its original text is 'loading...')
 	$('#gameStatus').html("");
 	// Initialize the stopwatch
@@ -130,11 +130,11 @@ function setup() {
 	// Then start to update the variation
   	// update();
 	updateAnimation();	// Call the canvas animation
-	switchGameStage(GameStage.welcome);
+	gotoGameStage(GameStage.welcome);
 }
 
-function switchGameStage(game_stage) {
-	if ( game_stage == GameStage.welcome ) {
+function gotoGameStage(nextStage) {
+	if ( nextStage == GameStage.welcome ) {
 		// Disable the keyboard event listener
 		setKeyboardEvent(false);
 		// reset stopwatch
@@ -160,15 +160,16 @@ function switchGameStage(game_stage) {
 		// If the previous stage is pause
 		if( gameStage == GameStage.pause ) {
 			// Resume the animation frame
-			animationFrameHandler =  requestAnimationFrame( updateAnimation );
+			animationFrameHandler =  requestAnimationFrame( updateAnimation )
 			// Reset the scores
-			score1 = score2 = 0;
-		}
+			score1 = score2 = 0
+			// Update the score text
+			updateStatusText('resetGame')
 	} 
-	else if ( game_stage == GameStage.setting ) {
+	else if ( nextStage == GameStage.setting ) {
 		
 	} 
-	else if ( game_stage == GameStage.play ) {			
+	else if ( nextStage == GameStage.play ) {			
 		// Enable the key events
 		setKeyboardEvent(true);
 		// Set the opacity of the game canvas to 1 (100%)
@@ -209,7 +210,7 @@ function switchGameStage(game_stage) {
 		}
 
 	} 
-	else if ( game_stage == GameStage.pause ) {
+	else if ( nextStage == GameStage.pause ) {
 		// Disable the keyboard event listener
 		setKeyboardEvent(false);
 		// Pause stopwatch
@@ -225,13 +226,13 @@ function switchGameStage(game_stage) {
 		// Set the title to 'Pause'
 		$('#pauseTitle').text('Pause');
 	}
-	else if( game_stage == GameStage.resume ) {
+	else if( nextStage == GameStage.resume ) {
 		// Resume from stage 'pause' to stage 'play'
 		$('#pauseScreen').find('*').css('visibility','hidden');
 		$('#pauseTitle').css('visibility','visible');
 		setResumeCountdownInterval(3);	// unit: second
 	}
-	else if ( game_stage == GameStage.end ) {
+	else if ( nextStage == GameStage.end ) {
 		// debug
 		// ball.material.color.setHex( Color.red );
 		// Disable the keyboard event listener
@@ -255,9 +256,9 @@ function switchGameStage(game_stage) {
 		score1 = score2 = 0;		
 	}
 	// At last, assign the new stage to the old stage
-	gameStage = game_stage;
+	gameStage = nextStage;
 	// Play corresponding sound
-	playSound(game_stage);
+	playSound(nextStage);
 }
 
 function playSound(option) {
@@ -793,7 +794,7 @@ function resetRound(loser = Identity.Player1) {
 	if( score1 >= winScore || score2 >= winScore ) {
 		// Someone wins
 		// cancelAnimationFrame( animationFrameHandler );
-		switchGameStage(GameStage.end);
+		gotoGameStage(GameStage.end);
 	}
 
 	// position the ball in the center of the table
@@ -1119,10 +1120,10 @@ function checkEvent() {
 	else if ( Key.isDown( Key.P ) ) {
 		// Pause the game
 		if( gameStage == GameStage.play ){
-			switchGameStage( GameStage.pause );
+			gotoGameStage( GameStage.pause );
 		} 
 		else if ( gameStage == GameStage.pause ) {
-			switchGameStage( GameStage.play );
+			gotoGameStage( GameStage.play );
 		}
 	}
 	// when 'm' is clicked
@@ -1227,7 +1228,7 @@ function setResumeCountdownInterval(sec) {
 		}
 		else if(sec <= -1){
 			clearInterval( intervalID );
-			switchGameStage( GameStage.play );
+			gotoGameStage( GameStage.play );
 		}
 		else {
 			$('#pauseTitle').text(sec);
