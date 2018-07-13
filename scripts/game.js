@@ -192,11 +192,6 @@ function gotoGameStage(nextStage) {
 			$('#pauseScreen').find('*').css('visibility','hidden');
 		}
 		else {	// 目前是end或者是welcome stage
-			if (gameStage == GameStage.end){
-				// Reset stopwatch
-				setStopWatch('stop')
-				setStopWatch('start')
-			}
 			// Reset game
 			resetGame();
 			// Stop the blink effect of the scoreboard text
@@ -213,6 +208,11 @@ function gotoGameStage(nextStage) {
 			// At last, set the other elements belong to the other stages to be invisible
 			$('#welcomeScreen').find('*').css('visibility','hidden');
 			$('#endScreen').find('*').css('visibility', 'hidden');
+			if (gameStage == GameStage.end){
+				// Reset stopwatch
+				setStopWatch('stop')
+				setStopWatch('start')
+			}
 		}
 
 	} 
