@@ -326,7 +326,7 @@ function toggleMute(){
 		// Stop all music
 		playSound('stop');
 		// Change the icon of the mute button 
-		$('#muteBtn img').attr('src','img/musicOff.png');
+		$('#muteBtn img').attr('src','img/music_off.png');
 	}
 	else{
 		// disable
@@ -334,7 +334,7 @@ function toggleMute(){
 		// Play music according to current stage
 		playSound(gameStage);
 		// Change the icon of the mute button
-		$('#muteBtn img').attr('src','img/musicOn.png');
+		$('#muteBtn img').attr('src','img/music_on.png');
 	}
 	// Unfocus the button( prevent it being clicked by keyboard )
 	$('#muteBtn').blur();
