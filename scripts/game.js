@@ -160,7 +160,7 @@ function gotoGameStage(nextStage) {
 		// If the previous stage is pause
 		if( gameStage == GameStage.pause ) {
 			// Resume the animation frame
-			animationFrameHandler =  requestAnimationFrame( updateAnimation );
+			animationFrameHandler = requestAnimationFrame( updateAnimation );
 			// Reset the scores
 			score1 = score2 = 0;
 			// Update the score text
@@ -777,7 +777,7 @@ function createBall(){
 // 	camera.rotation.y = -60 * Math.PI/180;
 // 	camera.rotation.z = -90 * Math.PI/180;
 // }
-function resetGame(init) {
+function resetGame() {
 	// Reset the y positions of the paddles
 	paddle1.position.y = 0;
 	paddle2.position.y = 0;
