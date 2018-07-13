@@ -778,6 +778,8 @@ function createBall(){
 // 	camera.rotation.z = -90 * Math.PI/180;
 // }
 function resetGame() {
+	// Reset stopwatch
+	setStopWatch('stop')
 	// Reset the y positions of the paddles
 	paddle1.position.y = 0;
 	paddle2.position.y = 0;
