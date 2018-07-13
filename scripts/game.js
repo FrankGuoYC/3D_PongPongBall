@@ -38,14 +38,14 @@ let animationFrameHandler;
 let blinkHandler;
 
 // Declare sound handler
-let bgMusic = new Audio("snd/mario.mp3"); // buffers automatically when created
+let bgMusic = new Audio("snd/mario.mp3") // buffers automatically when created
 bgMusic.loop = true;
-let hitSound = new Audio("snd/hit.wav");
-let scoreSound = new Audio("snd/score.wav");
-let winSound = new Audio("snd/win.wav");
-let pauseSound = new Audio("snd/pause.wav");
+let hitSound = new Audio("snd/hit.wav")
+let scoreSound = new Audio("snd/score.wav")
+let winSound = new Audio("snd/win.wav")
+let pauseSound = new Audio("snd/pause.wav")
 let countdownSound = new Audio("snd/countdown.wav")
-let goSound = new Audio("snd/go.wav");
+let goSound = new Audio("snd/go.wav")
 let isMute = false;
 
 // Stopwatch settings
@@ -161,6 +161,8 @@ function switchGameStage(game_stage) {
 		if( gameStage == GameStage.pause ) {
 			// Resume the animation frame
 			animationFrameHandler =  requestAnimationFrame( updateAnimation );
+			// Reset the scores
+			score1 = score2 = 0;
 		}
 	} 
 	else if ( game_stage == GameStage.setting ) {
