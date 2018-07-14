@@ -7,5 +7,8 @@ Click [**HERE**](https://frankguoyc.github.io/3D_PongPongBall/) and you can enjo
 
 If you have any question, you can contact me via my mail: yckuo5k2b@gmail.com
 
+## Snapshot
+![Snapshot](snapshot/snapshot1.jpg)
+
 
 
