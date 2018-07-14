@@ -306,7 +306,6 @@ function playSound(option) {
 			// Stop the other sounds
 			bgMusic.pause();
 			bgMusic.currentTime = 0;
-
 		}
 		else if( option == 'hit') {
 			// Just play it
